@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>⚙️ Admin Dashboard - SPT League</h1>
+  <nav>
+    <a href="index.html">Trang chủ</a>
+    <a href="register.html">Đăng ký</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
+
+<section class="admin-container">
+  <h2>📋 Danh sách đội đã đăng ký</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tên đội</th>
+        <th>Đội trưởng</th>
+        <th>SĐT</th>
+      </tr>
+    </thead>
+    <tbody id="adminTable"></tbody>
+  </table>
+</section>
+
+<script>
+  const password = prompt("Nhập mật khẩu admin:");
+if (password !== "spt2026") {
+  alert("Sai mật khẩu!");
+  window.location.href = "index.html";
+}
+let teams = JSON.parse(localStorage.getItem("teams")) || [];
+const table = document.getElementById("adminTable");
+
+function renderAdmin() {
+  table.innerHTML = "";
+
+  teams.forEach((team, index) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${team.name}</td>
+      <td>${team.captain}</td>
+      <td>${team.phone}</td>
+      <td>
+        <button onclick="deleteTeam(${index})">❌ Xoá</button>
+      </td>
+    `;
+
+    table.appendChild(row);
+  });
+}
+
+function deleteTeam(index) {
+  if (confirm("Bạn có chắc muốn xoá đội này?")) {
+    teams.splice(index, 1);
+    localStorage.setItem("teams", JSON.stringify(teams));
+    renderAdmin();
+  }
+}
+
+renderAdmin();
+</script>
+
+</body>
+</html>

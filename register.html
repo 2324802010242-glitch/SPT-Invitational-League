@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Đăng ký đội bóng</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>Đăng ký đội bóng</h1>
+  <nav>
+    <a href="index.html">Trang chủ</a>
+    <a href="register.html">Đăng ký</a>
+    <a href="about.html">Giới thiệu</a>
+  </nav>
+</header>
+
+<section class="form-container">
+  <form id="teamForm">
+    <input type="text" id="captain" placeholder="Đội trưởng" required />
+    <input type="tel" id="phone" placeholder="Số điện thoại" required />
+    <button type="submit">Đăng ký</button>
+  </form>
+
+  <h2>Danh sách đội đã đăng ký</h2>
+  <ul id="teamList"></ul>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
